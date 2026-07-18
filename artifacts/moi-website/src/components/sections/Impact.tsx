@@ -1,6 +1,10 @@
 import { useEffect, useLayoutEffect, useRef, useState, useCallback } from "react";
+import { useLocation } from "wouter";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import MagneticButton from "@/components/ui/MagneticButton";
 import video1 from "@localassets/homepage_video_1.mp4";
 import video2 from "@localassets/homepage_video_2.mp4";
 import video3 from "@localassets/homepage_video_3.mp4";
@@ -225,6 +229,7 @@ function VideoCard({ card, slot, cardH, cardW, slotStyles, isMobile, onClick }: 
 
 // ─── Main Impact section ──────────────────────────────────────────────────────
 export default function Impact() {
+  const [, setLocation] = useLocation();
   const sectionRef  = useRef<HTMLDivElement>(null);
   const leftRef     = useRef<HTMLDivElement>(null);
   const rightRef    = useRef<HTMLDivElement>(null);
@@ -404,7 +409,7 @@ export default function Impact() {
           {/* ── Right col: interactive carousel ─────────────────────────────── */}
           <div
             ref={rightRef}
-            className="md:w-1/2 w-full flex items-center justify-center lg:pt-[220px]"
+            className="md:w-1/2 w-full flex flex-col items-center justify-center lg:pt-[220px]"
           >
             <div
               ref={carouselRef}
@@ -430,6 +435,20 @@ export default function Impact() {
                   />
                 );
               })}
+            </div>
+
+            {/* View More Button */}
+            <div className="-mt-4 md:-mt-8 relative z-20">
+              <MagneticButton>
+                <Button
+                  size="lg"
+                  onClick={() => setLocation("/our-works")}
+                  className="h-12 sm:h-14 px-8 sm:px-10 rounded-full bg-gradient-to-r from-[#0066FF] to-[#FF0099] hover:opacity-90 text-white font-bold group transition-all"
+                >
+                  View More
+                  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </MagneticButton>
             </div>
           </div>
 
