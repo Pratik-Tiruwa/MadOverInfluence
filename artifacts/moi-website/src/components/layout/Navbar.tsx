@@ -83,7 +83,6 @@ function MobileMenu({
 export default function Navbar({ isStaticPage }: { isStaticPage?: boolean }) {
   const [isScrolled, setIsScrolled]         = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [logoKey, setLogoKey]               = useState(0);
   const [, navigate]                        = useLocation();
 
   useEffect(() => {
@@ -91,7 +90,6 @@ export default function Navbar({ isStaticPage }: { isStaticPage?: boolean }) {
       const scrolled = window.scrollY > 80;
       if (scrolled !== isScrolled) {
         setIsScrolled(scrolled);
-        setLogoKey((k) => k + 1);
       }
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -166,8 +164,14 @@ export default function Navbar({ isStaticPage }: { isStaticPage?: boolean }) {
             className="relative z-10 flex items-center shrink-0"
             data-testid="link-navbar-home"
           >
+            {/* Preload to prevent decode lag on swap */}
+            <div style={{ display: 'none' }}>
+              <img src={fullLogo} alt="" />
+              <img src={moiLogo} alt="" />
+            </div>
+            
             <motion.img
-              key={logoKey}
+              key={isScrolled ? "short" : "full"}
               src={isScrolled ? moiLogo : fullLogo}
               alt={isScrolled ? "MOI" : "MadeOverInfluence"}
               initial={{ opacity: 0, x: isScrolled ? 10 : -10, scale: 0.9, filter: "blur(4px)" }}
