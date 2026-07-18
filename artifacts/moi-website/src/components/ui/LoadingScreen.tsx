@@ -20,9 +20,9 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
         // Wait a tiny bit after reaching 100%, then slide up
         gsap.to(containerRef.current, {
           yPercent: -100,
-          duration: 0.9,
+          duration: 0.6,
           ease: "power4.inOut",
-          delay: 0.2,
+          delay: 0.1,
           onComplete: () => {
             onComplete();
           }
@@ -32,7 +32,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
 
     tl.to(progress, {
       value: 100,
-      duration: 2.4,
+      duration: 0.8,
       ease: "power2.inOut", // smooth easing for the loading bar
       onUpdate: () => {
         const currentValue = Math.floor(progress.value);
