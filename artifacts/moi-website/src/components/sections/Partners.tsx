@@ -180,7 +180,7 @@ export default function Partners() {
         <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white mb-4 leading-tight">
           45+{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0066FF] to-[#FF0099]">
-            Brands
+            Brands Partnerships
           </span>
         </h2>
         <p className="text-white/40 text-sm sm:text-base font-light max-w-xl mx-auto">
