@@ -50,3 +50,4 @@ VERCEL_SERVERLESS_GUIDE.md
 
 
 .vercel
+.env*
