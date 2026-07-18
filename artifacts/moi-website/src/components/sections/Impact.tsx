@@ -313,8 +313,8 @@ export default function Impact() {
   const sideOffset = Math.abs(slotStyles.leftNear.x);
   // Mobile: fit card width to available screen width (px-4 = 16px each side)
   const mobileCardW = Math.max(140, screenW - 32 - sideOffset * 2 - 32);
-  const CARD_H = isMobile ? Math.round(mobileCardW * 16 / 9) : 520;
-  const CARD_W = isMobile ? mobileCardW : Math.round(520 * 9 / 16);
+  const CARD_H = isMobile ? Math.round(mobileCardW * 16 / 9) : 480;
+  const CARD_W = isMobile ? mobileCardW : Math.round(480 * 9 / 16);
   const containerW = sideOffset * 2 + CARD_W + 32;
   const containerH = CARD_H + (isMobile ? 40 : 72); // extra room for rotation overflow
 
