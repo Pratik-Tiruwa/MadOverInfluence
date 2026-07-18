@@ -216,7 +216,7 @@ function VideoModal({ deal, onClose }: { deal: typeof brandDeals[0]; onClose: ()
 
             <video
               ref={videoRef}
-              src={deal.videoSrc}
+              src={`${deal.videoSrc}#t=0.001`}
               className="w-full h-auto block max-h-[80vh]"
               controls
               playsInline
@@ -308,7 +308,7 @@ function VideoCard({
       <div className={`relative bg-[#0a0a0a] overflow-hidden ${featured ? "aspect-[4/3]" : "aspect-[9/16]"}`}>
         <video
           ref={videoRef}
-          src={deal.videoSrc}
+          src={`${deal.videoSrc}#t=0.001`}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           muted
           playsInline

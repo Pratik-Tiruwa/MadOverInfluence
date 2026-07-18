@@ -124,7 +124,7 @@ export default function OurWorks() {
             style={{ background: "linear-gradient(90deg, transparent, #FF009980, transparent)" }}
           />
           <video
-            src="/videos/aryan-unicorn.mp4"
+            src="/videos/aryan-unicorn.mp4#t=0.001"
             className="w-full max-h-[540px] object-cover"
             controls
             playsInline
