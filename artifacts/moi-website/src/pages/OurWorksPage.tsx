@@ -443,9 +443,9 @@ export default function OurWorksPage() {
               </p>
               <div className="flex gap-6 sm:gap-10 shrink-0">
                 {[
-                  { value: "70M+", label: "Total Reach" },
-                  { value: "40+", label: "Brands" },
-                  { value: "70+", label: "Creators" },
+                  { value: "80M+", label: "Total Views" },
+                  { value: "45+", label: "Brands" },
+                  { value: "100+", label: "Creators" },
                 ].map((s) => (
                   <div key={s.label}>
                     <div className="text-xl sm:text-3xl font-black text-white">{s.value}</div>

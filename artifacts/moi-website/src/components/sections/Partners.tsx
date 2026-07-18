@@ -120,9 +120,9 @@ function BrandPill({ brand }: { brand: typeof tier1[0] }) {
 }
 
 const stats = [
-  { number: "40+", label: "Brand Partnerships" },
-  { number: "70M+", label: "Combined Reach" },
-  { number: "70+", label: "Creators Managed" },
+  { number: "45+", label: "Brands" },
+  { number: "80M+", label: "Views" },
+  { number: "100+", label: "Creators" },
 ];
 
 export default function Partners() {
@@ -178,9 +178,9 @@ export default function Partners() {
           Brands We Work With
         </p>
         <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white mb-4 leading-tight">
-          40+{" "}
+          45+{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0066FF] to-[#FF0099]">
-            Brand Partnerships
+            Brands
           </span>
         </h2>
         <p className="text-white/40 text-sm sm:text-base font-light max-w-xl mx-auto">

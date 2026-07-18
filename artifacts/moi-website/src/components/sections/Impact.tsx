@@ -10,20 +10,20 @@ gsap.registerPlugin(ScrollTrigger);
 // ─── Stats data (unchanged) ───────────────────────────────────────────────────
 const stats = [
   {
-    value: "70M+",
-    label: "Reach",
+    value: "80M+",
+    label: "Views",
     accent: "#0066FF",
     desc: "Combined audience across all creator platforms",
   },
   {
-    value: "40+",
+    value: "45+",
     label: "Brands",
     accent: "#FF0099",
     desc: "Trusted brand partners we've collaborated with",
   },
   {
-    value: "70+",
-    label: "Creators Empowered",
+    value: "100+",
+    label: "Creators",
     accent: "#7755FF",
     desc: "Talented creators growing under our management",
   },

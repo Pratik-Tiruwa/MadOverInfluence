@@ -11,9 +11,9 @@ const tickerItems = [
   "Long-Term Brand Deals",
   "Campaign Execution",
   "Usage Rights Protection",
-  "70+ Creators",
-  "70M+ Reach",
-  "100+ Brands",
+  "100+ Creators",
+  "80M+ Views",
+  "45+ Brands",
 ];
 
 // Split a string into per-word animated spans
