@@ -141,24 +141,24 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#050505]"
+      className="relative min-h-[80svh] sm:min-h-[65svh] md:min-h-[60svh] lg:min-h-[85vh] flex flex-col items-center justify-center overflow-hidden bg-[#050505]"
       ref={containerRef}
     >
       <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none" />
 
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        {/* Optimized glows without heavy blur filters */}
+        {/* Large, soft radial glows strictly anchored to the edges */}
         <div 
-          className="absolute top-1/4 -left-1/4 w-[120vw] max-w-[800px] aspect-square rounded-full opacity-[0.03] animate-pulse" 
+          className="absolute top-[35%] -translate-y-1/2 left-0 -translate-x-1/2 w-[100vw] lg:w-[120vw] max-w-[900px] aspect-square rounded-full opacity-[0.02] lg:opacity-[0.05] animate-pulse pointer-events-none" 
           style={{ background: 'radial-gradient(circle, #0066FF 0%, transparent 60%)' }}
         />
         <div 
-          className="absolute bottom-1/4 -right-1/4 w-[120vw] max-w-[800px] aspect-square rounded-full opacity-[0.03] animate-pulse" 
+          className="absolute top-[35%] -translate-y-1/2 right-0 translate-x-1/2 w-[100vw] lg:w-[120vw] max-w-[900px] aspect-square rounded-full opacity-[0.02] lg:opacity-[0.05] animate-pulse pointer-events-none" 
           style={{ background: 'radial-gradient(circle, #FF0099 0%, transparent 60%)', animationDelay: "2s" }}
         />
       </div>
 
-      <div className="container relative z-10 mx-auto px-4 sm:px-6 flex flex-col items-center text-center pt-24 pb-12 sm:pb-16">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 flex flex-col items-center text-center pt-20 pb-8 sm:pt-24 sm:pb-16">
         <div className="max-w-5xl mx-auto flex flex-col items-center gap-0">
 
           {/* Badge */}
@@ -235,7 +235,7 @@ export default function Hero() {
 
       <button
         onClick={() => scrollTo("#about")}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30 hover:opacity-60 transition-opacity z-10 cursor-pointer"
+        className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30 hover:opacity-60 transition-opacity z-10 cursor-pointer"
         data-testid="button-scroll-down"
         aria-label="Scroll down"
       >
