@@ -1,101 +1,112 @@
 <div align="center">
-  <img src="artifacts/moi-website/public/moi-logo-transparent.png" alt="MOI Logo" width="200" />
+  <img src="artifacts/moi-website/public/moi-logo-transparent.png" alt="MadeOverInfluence Logo" width="220" />
   
+  <br />
+  <br />
+
   # MadeOverInfluence (MOI)
   **Empowering Creators, Elevating Brands**
   
-  <p>MOI is a creator-first talent management and influencer marketing agency built to scale long-term creator careers and secure premium brand partnerships.</p>
+  <p align="center">
+    A premium, creator-first talent management and influencer marketing platform. Engineered to scale long-term creator careers and secure high-value brand partnerships through cutting-edge technology and design.
+  </p>
+
+  <br />
 </div>
 
 ---
 
-## ✨ Features
+## ⚡ Core Features
 
-- **Blazing Fast Performance:** Built on React 19 and Vite for lightning-fast loads.
-- **Premium Aesthetics:** Modern dark-mode UI with glassmorphism and tailored color palettes.
-- **Buttery Smooth Animations:** High-performance, 60fps scrolling and micro-interactions powered by GSAP and Framer Motion. GPU-optimized gradients replace heavy blurs to ensure zero jank on mobile devices.
-- **Serverless Architecture:** Fully integrated with Vercel Serverless Functions for seamless API handling (no separate Express server needed).
-- **Automated Emails:** Contact forms are powered by the Resend SDK for reliable email delivery.
-- **SEO Optimized:** Comprehensive Open Graph (OG), Twitter Cards, and semantic meta tags for perfect social sharing previews.
-
-## 🛠 Tech Stack
-
-| Layer | Technology |
-|---|---|
-| **Frontend** | React 19 + Vite + TailwindCSS v4 + GSAP + Framer Motion |
-| **Backend (API)** | Vercel Serverless Functions + Resend SDK |
-| **Language** | TypeScript (Strict Mode) |
-| **Monorepo** | pnpm workspaces |
-| **Deployment** | Vercel (CI/CD) |
+- **Architected for Speed:** Built on React 19 and Vite, ensuring near-instantaneous load times and a seamless user journey.
+- **Premium Design System:** A sophisticated dark-mode aesthetic leveraging glassmorphism, tailored typography, and a cohesive color palette that reflects modern brand standards.
+- **High-Performance Animations:** 60fps scroll experiences and dynamic micro-interactions powered by GSAP and Framer Motion. Heavy CSS filters have been replaced with hardware-accelerated radial gradients to ensure zero frame drops on mobile devices.
+- **Serverless Infrastructure:** Native integration with Vercel Serverless Functions for robust, zero-maintenance API handling (eliminating the overhead of traditional Node.js servers).
+- **Automated Communication:** Contact systems are driven by the Resend SDK, guaranteeing reliable and secure email delivery.
+- **Search Engine Optimized:** Fully equipped with semantic meta tags, Open Graph (OG), and Twitter Cards for rich, perfect previews across all social platforms.
 
 ---
 
-## 🚀 Local Development Setup
+## 🛠 Technology Architecture
 
-This project uses a monorepo structure managed by `pnpm`. Please ensure you use `pnpm` and not `npm` or `yarn`.
+| Layer | Technology |
+|---|---|
+| **Frontend Framework** | React 19, Vite, TailwindCSS v4 |
+| **Animation Engine** | GSAP, Framer Motion |
+| **Backend & API** | Vercel Serverless Functions, Resend SDK |
+| **Type Safety** | TypeScript (Strict Mode), Zod |
+| **Workspace Management** | pnpm (Monorepo) |
+| **CI/CD & Hosting** | Vercel |
+
+---
+
+## 🚀 Local Development Guide
+
+This repository utilizes a monorepo architecture managed by `pnpm`. Please ensure `pnpm` is used for all package management commands.
 
 ### Prerequisites
-1. **Node.js** (v20 or v24)
+1. **Node.js** (v20 or v24 recommended)
 2. **pnpm** (`npm install -g pnpm`)
 3. **Vercel CLI** (`npm install -g vercel`)
 
-### Step 1: Install Dependencies
-Run the following command in the root directory to install packages for the entire workspace:
+### 1. Install Dependencies
+Run the following command in the repository root to install packages across all workspaces:
 ```bash
 pnpm install
 ```
 
-### Step 2: Environment Variables
-Create a `.env` file in the **root folder**. The `.gitignore` is already configured to keep this secure.
+### 2. Environment Configuration
+Create a `.env` file in the **root directory**. The repository's `.gitignore` is pre-configured to ensure this file remains secure and local.
 ```env
-# Required for the Contact Form
-RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxxxxx
-RESEND_FROM_EMAIL=contact@madoverinfluence.com
-CONTACT_RECEIVER_EMAIL=info.madeoverinfluence@gmail.com
+# Resend API Configuration for Contact Form
+RESEND_API_KEY=re_your_api_key_here
+RESEND_FROM_EMAIL=your_sender_domain_email@example.com
+CONTACT_RECEIVER_EMAIL=your_receiving_email@example.com
 ```
-*(You can obtain a free API key from [resend.com](https://resend.com))*
+*(Secure your API key and configure domains via your [Resend Dashboard](https://resend.com))*
 
-### Step 3: Start the Development Server
-To run both the frontend and the serverless API functions locally, use the Vercel CLI:
+### 3. Initialize Development Environment
+To run the full stack (Frontend + Serverless API) locally, utilize the Vercel CLI:
 ```bash
 vercel dev
 ```
-- **Website:** `http://localhost:3000`
-- **Health API:** `http://localhost:3000/api/healthz`
-- **Contact API:** `http://localhost:3000/api/contact`
+- **Web Interface:** `http://localhost:3000`
+- **Health Check Endpoint:** `http://localhost:3000/api/healthz`
+- **Contact Form Endpoint:** `http://localhost:3000/api/contact`
 
 ---
 
-## 📁 Project Structure
+## 📁 Repository Structure
 
 ```text
 MOI-Website/
 ├── artifacts/
-│   └── moi-website/               # Frontend + Serverless API
-│       ├── api/                   # Vercel Serverless Functions
-│       ├── src/                   # React Source Code (Components, Pages, Hooks)
-│       └── public/                # Static assets (Favicons, OG Images)
-├── lib/                           # Shared internal packages
-│   └── api-zod/                   # Zod schemas shared between frontend and API
-├── vercel.json                    # Vercel configuration & routing rules
-├── pnpm-workspace.yaml            # Monorepo configuration
-└── .env                           # Local environment variables (Git ignored)
+│   └── moi-website/               # Frontend Application & Serverless API
+│       ├── api/                   # Vercel Serverless Route Handlers
+│       ├── src/                   # React Components, Pages, and Hooks
+│       └── public/                # Static Assets (Favicons, OG Images)
+├── lib/                           # Internal Shared Packages
+│   └── api-zod/                   # Zod validation schemas (Shared across Full Stack)
+├── vercel.json                    # Vercel Deployment & Routing Configuration
+├── pnpm-workspace.yaml            # Monorepo Workspace Definitions
+└── .env                           # Local Environment Variables (Git Ignored)
 ```
 
-## 📜 Available Commands
+## 📜 CLI Reference
 
-From the root of the project, you can run:
+From the root directory, you can execute:
 
 ```bash
-pnpm install                                     # Install all dependencies
-vercel dev                                       # Start full-stack local server
-pnpm --filter @workspace/moi-website run dev     # Start frontend ONLY (No API)
-pnpm run build                                   # Build for production
-pnpm run typecheck                               # Run TypeScript validation globally
+pnpm install                                     # Install all dependencies across workspaces
+vercel dev                                       # Boot full-stack local server environment
+pnpm --filter @workspace/moi-website run dev     # Boot frontend exclusively (API disabled)
+pnpm run build                                   # Compile production-ready builds
+pnpm run typecheck                               # Execute global TypeScript validation
 ```
 
 ---
 
 <div align="center">
-  <sub>Built with ❤️ by MadeOverInfluence</sub>
+  <br />
+  <sub>Engineered with precision by <b>MadeOverInfluence</b></sub>
 </div>
