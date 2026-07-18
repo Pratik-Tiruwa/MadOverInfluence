@@ -1,0 +1,50 @@
+# See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# compiled output
+dist
+tmp
+*.tsbuildinfo
+
+
+# dependencies
+node_modules
+
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+
+# System Files
+.DS_Store
+Thumbs.db
+
+
+# System/IDE Folders
+.local/
+.config/
+.agents/
+
+# Environment variables
+.env 
+
+
+# Important files 
+Security_Analysis.md
+center-focus-card-swap-carousel-guide.md
+TECH_STACK_ANALYSIS.md
+HOW_TO_RUN.md
+VERCEL_SERVERLESS_GUIDE.md
+
