@@ -438,12 +438,12 @@ export default function Impact() {
             </div>
 
             {/* View More Button */}
-            <div className="-mt-4 md:-mt-8 relative z-20">
+            <div className="mt-2 sm:-mt-2 md:-mt-4 lg:-mt-8 relative z-20">
               <MagneticButton>
                 <Button
                   size="lg"
                   onClick={() => setLocation("/our-works")}
-                  className="h-12 sm:h-14 px-8 sm:px-10 rounded-full bg-gradient-to-r from-[#0066FF] to-[#FF0099] hover:opacity-90 text-white font-bold group transition-all"
+                  className="h-10 sm:h-12 md:h-14 px-6 sm:px-8 md:px-10 rounded-full bg-gradient-to-r from-[#0066FF] to-[#FF0099] hover:opacity-90 text-white font-bold text-sm sm:text-base group transition-all"
                 >
                   View More
                   <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
