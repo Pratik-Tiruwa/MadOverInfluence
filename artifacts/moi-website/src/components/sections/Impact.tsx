@@ -358,10 +358,10 @@ export default function Impact() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <div className="flex flex-col md:flex-row gap-10 md:gap-10 lg:gap-20 md:items-start">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 lg:items-start">
 
           {/* ── Left col: stats (unchanged) ─────────────────────────────────── */}
-          <div ref={leftRef} className="md:w-1/2 w-full">
+          <div ref={leftRef} className="lg:w-1/2 w-full">
             <p className="text-xs font-semibold tracking-[0.3em] uppercase text-[#0066FF] mb-6">
               Our Impact
             </p>
@@ -409,7 +409,7 @@ export default function Impact() {
           {/* ── Right col: interactive carousel ─────────────────────────────── */}
           <div
             ref={rightRef}
-            className="md:w-1/2 w-full flex flex-col items-center justify-center lg:pt-[220px]"
+            className="lg:w-1/2 w-full flex flex-col items-center justify-center lg:pt-[220px]"
           >
             <div
               ref={carouselRef}
