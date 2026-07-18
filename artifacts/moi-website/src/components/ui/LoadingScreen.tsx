@@ -73,7 +73,10 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
         <img
           src={moiLogo}
           alt="MOI"
-          className="h-14 mb-16 opacity-90"
+          className="h-10 sm:h-12 md:h-14 mb-10 sm:mb-12 md:mb-16 opacity-90"
+          loading="eager"
+          fetchPriority="high"
+          decoding="sync"
         />
 
         <div className="w-full mb-6">
