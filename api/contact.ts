@@ -64,10 +64,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         : "Other inquiry";
 
   try {
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: `MOI Website <${FROM_EMAIL}>`,
       to: [TARGET_EMAIL],
-      replyTo: email,
+      reply_to: email,
       subject: `Contact Form: ${name} (${interestLabel})`,
       html: `
         <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:32px;border:1px solid #e0e0e0;border-radius:8px;background:#ffffff">
@@ -101,9 +101,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       `,
     });
 
-    return res.status(200).json({ success: true });
+    if (error) {
+      console.error("Resend API Error:", error);
+      return res.status(400).json({ error: error.message });
+    }
+
+    return res.status(200).json({ success: true, data });
   } catch (err) {
-    console.error("Resend email failed:", err);
+    console.error("Resend email failed with exception:", err);
     return res
       .status(500)
       .json({ error: "Failed to send email. Please try again." });
