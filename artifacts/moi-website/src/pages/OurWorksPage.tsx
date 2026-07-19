@@ -209,9 +209,9 @@ function VideoModal({ deal, onClose }: { deal: typeof brandDeals[0]; onClose: ()
             {/* Close button — inside the card */}
             <button
               onClick={onClose}
-              className="absolute top-3 right-3 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-sm text-white/70 hover:text-white hover:bg-black/80 transition-all text-xs font-semibold tracking-wider border border-white/10"
+              className="absolute top-3 right-3 z-20 flex items-center justify-center gap-1.5 w-8 h-8 lg:w-auto lg:h-auto lg:px-3 lg:py-1.5 rounded-full bg-black/60 backdrop-blur-sm text-white/70 hover:text-white hover:bg-black/80 transition-all text-xs font-semibold tracking-wider border border-white/10"
             >
-              <X size={12} /> ESC
+              <X size={12} /> <span className="hidden lg:inline">ESC</span>
             </button>
 
             <video
