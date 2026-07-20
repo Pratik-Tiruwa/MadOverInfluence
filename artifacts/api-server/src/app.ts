@@ -1,11 +1,13 @@
 import express, { type Express } from "express";
 import cors from "cors";
+import helmet from "helmet";
 import pinoHttp from "pino-http";
 import router from "./routes";
 import { logger } from "./lib/logger";
 
 const app: Express = express();
 
+app.use(helmet());
 app.use(
   pinoHttp({
     logger,
@@ -25,9 +27,22 @@ app.use(
     },
   }),
 );
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const allowedOrigins = [
+  "https://madeoverinfluence.com",
+  "https://www.madeoverinfluence.com",
+  "http://localhost:3000",
+  "http://localhost:5173",
+];
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
+    credentials: true,
+  }),
+);
+app.use(express.json({ limit: "10kb" }));
+app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 
 app.use("/api", router);
 
