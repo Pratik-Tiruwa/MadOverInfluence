@@ -1,1 +1,1 @@
-{ "version": 2, "buildCommand": "pnpm --filter @workspace/moi-website run build", "devCommand": "pnpm --filter @workspace/moi-website run dev", "outputDirectory": "artifacts/moi-website/dist/public", "installCommand": "pnpm install" }
+{ "version": 2, "buildCommand": "pnpm --filter @workspace/moi-website run build", "devCommand": "pnpm --filter @workspace/moi-website run dev", "outputDirectory": "artifacts/moi-website/dist/public", "installCommand": "pnpm install --no-frozen-lockfile" }
