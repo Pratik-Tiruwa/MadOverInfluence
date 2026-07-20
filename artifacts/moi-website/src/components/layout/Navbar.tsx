@@ -170,14 +170,10 @@ export default function Navbar({ isStaticPage }: { isStaticPage?: boolean }) {
               <img src={moiLogo} alt="" />
             </div>
             
-            <motion.img
-              key={isScrolled ? "short" : "full"}
+            <img
               src={isScrolled ? moiLogo : fullLogo}
               alt={isScrolled ? "MOI" : "MadeOverInfluence"}
-              initial={{ opacity: 0, x: isScrolled ? 10 : -10, scale: 0.9, filter: "blur(4px)" }}
-              animate={{ opacity: 1, x: 0, scale: 1, filter: "blur(0px)" }}
-              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className={`object-contain ${isScrolled ? "h-10" : "h-11"}`}
+              className={`object-contain transition-all duration-300 ease-in-out ${isScrolled ? "h-9 lg:h-10" : "h-10 lg:h-11"}`}
               data-testid="img-navbar-logo"
             />
           </a>
