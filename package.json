@@ -9,11 +9,11 @@
   },
   "private": true,
   "devDependencies": {
-    "@types/node": "catalog:",
     "prettier": "^3.8.1",
     "typescript": "~5.9.2"
   },
   "dependencies": {
+    "@types/node": "catalog:",
     "@vercel/node": "^3.0.0",
     "resend": "^3.0.0",
     "zod": "^3.0.0"

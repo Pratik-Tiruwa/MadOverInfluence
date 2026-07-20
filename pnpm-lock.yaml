@@ -145,6 +145,9 @@ importers:
 
   .:
     dependencies:
+      '@types/node':
+        specifier: 'catalog:'
+        version: 25.3.5
       '@vercel/node':
         specifier: ^3.0.0
         version: 3.2.29
@@ -155,9 +158,6 @@ importers:
         specifier: ^3.0.0
         version: 3.25.76
     devDependencies:
-      '@types/node':
-        specifier: 'catalog:'
-        version: 25.3.5
       prettier:
         specifier: ^3.8.1
         version: 3.8.1
