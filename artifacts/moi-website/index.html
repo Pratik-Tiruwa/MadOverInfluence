@@ -33,7 +33,11 @@
   <body>
     <style>
       /* Fallback styles until Tailwind loads */
-      #root:empty {
+      body {
+        background-color: #050505; /* Prevent white flash */
+        margin: 0;
+      }
+      .fallback-wrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -60,6 +64,21 @@
         height: 1px;
         background-color: rgba(255, 255, 255, 0.1);
         margin-bottom: 1.5rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .fallback-progress-fill {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(to right, #0066FF, #FF0099);
+        animation: fake-progress 5s cubic-bezier(0.1, 0.7, 1, 0.1) forwards;
+      }
+      @keyframes fake-progress {
+        0% { width: 0%; }
+        100% { width: 60%; } /* Stops at 60% waiting for React */
       }
       .fallback-text-row {
         display: flex;
@@ -72,23 +91,33 @@
         font-size: 0.75rem;
         letter-spacing: 0.3em;
         text-transform: uppercase;
+        animation: pulse-text 1.5s infinite;
+      }
+      @keyframes pulse-text {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 0.8; }
       }
       .fallback-percent {
         color: white;
         font-size: 2.25rem;
         font-weight: 900;
+        margin: 0;
       }
       .fallback-percent span {
         color: #0066FF;
       }
     </style>
     <div id="root">
-      <div class="fallback-loader-container">
-        <img src="/moi-logo-transparent.png" alt="MOI" class="fallback-logo" />
-        <div class="fallback-progress-bg"></div>
-        <div class="fallback-text-row">
-          <span class="fallback-loading-text">Loading</span>
-          <span class="fallback-percent">0<span>%</span></span>
+      <div class="fallback-wrapper">
+        <div class="fallback-loader-container">
+          <img src="/moi-logo-transparent.png" alt="MOI" class="fallback-logo" />
+          <div class="fallback-progress-bg">
+            <div class="fallback-progress-fill"></div>
+          </div>
+          <div class="fallback-text-row">
+            <span class="fallback-loading-text">Loading</span>
+            <span class="fallback-percent">-<span>-</span></span>
+          </div>
         </div>
       </div>
     </div>
