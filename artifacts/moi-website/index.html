@@ -84,11 +84,7 @@
         width: 0%;
         background: linear-gradient(to right, #0066FF, #FF0099);
         border-radius: 9999px;
-        animation: initial-progress 5s cubic-bezier(0.1, 0.7, 1, 0.1) forwards;
-      }
-      @keyframes initial-progress {
-        0% { width: 0%; }
-        100% { width: 85%; }
+        transition: width 0.3s ease-out;
       }
       .static-text-row {
         display: flex;
@@ -138,19 +134,33 @@
       </div>
     </div>
     <script>
+      window.MIN_LOADER_DONE = false;
+      window.ON_MIN_LOADER_DONE = null;
+
       (function(){
-        var l = document.getElementById('static-loader');
         var p = document.querySelector('.static-percent');
-        var s = Date.now(), d = 5000, t = 85;
-        function u(){
-          if (l && l.dataset.done) return;
-          var e = Date.now() - s;
-          var v = Math.min(e / d, 1);
-          v = 1 - Math.pow(1 - v, 3); /* ease-out cubic */
-          if (p) p.innerHTML = Math.floor(v * t) + '<span>%</span>';
-          if (e < d) requestAnimationFrame(u);
+        var f = document.querySelector('.static-progress-fill');
+        var steps = [0, 25, 50, 75, 100];
+        var i = 0;
+        
+        function nextStep() {
+          if (i < steps.length) {
+            var v = steps[i];
+            if (p) p.innerHTML = v + '<span>%</span>';
+            if (f) f.style.width = v + '%';
+            i++;
+            
+            if (v === 100) {
+              setTimeout(function() {
+                window.MIN_LOADER_DONE = true;
+                if (window.ON_MIN_LOADER_DONE) window.ON_MIN_LOADER_DONE();
+              }, 300);
+            } else {
+              setTimeout(nextStep, 500); // 500ms per step
+            }
+          }
         }
-        requestAnimationFrame(u);
+        setTimeout(nextStep, 100);
       })();
     </script>
     <div id="root"></div>

@@ -429,15 +429,10 @@ export default function OurWorksPage() {
 
   useEffect(() => {
     if ((window as any).IS_INITIAL_LOAD) {
-      const staticLoader = document.getElementById("static-loader");
-      if (staticLoader) {
-        staticLoader.dataset.done = "true";
-        const percent = staticLoader.querySelector('.static-percent');
-        const fill = staticLoader.querySelector('.static-progress-fill') as HTMLElement;
-        if (percent) percent.innerHTML = '100<span>%</span>';
-        if (fill) fill.style.width = '100%';
-
-        setTimeout(() => {
+      const finishLoader = () => {
+        const staticLoader = document.getElementById("static-loader");
+        if (staticLoader) {
+          staticLoader.dataset.done = "true";
           staticLoader.style.transition = "opacity 0.6s ease-in-out, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
           staticLoader.style.opacity = "0";
           staticLoader.style.transform = "translateY(-100%)";
@@ -445,9 +440,15 @@ export default function OurWorksPage() {
             staticLoader.remove();
             (window as any).IS_INITIAL_LOAD = false;
           }, 600);
-        }, 100);
+        } else {
+          (window as any).IS_INITIAL_LOAD = false;
+        }
+      };
+
+      if ((window as any).MIN_LOADER_DONE) {
+        finishLoader();
       } else {
-        (window as any).IS_INITIAL_LOAD = false;
+        (window as any).ON_MIN_LOADER_DONE = finishLoader;
       }
     }
   }, []);
