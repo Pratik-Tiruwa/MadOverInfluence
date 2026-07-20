@@ -420,7 +420,32 @@ function VideoCard({
 export default function OurWorksPage() {
   const [, navigate] = useLocation();
   const [activeModal, setActiveModal] = useState<typeof brandDeals[0] | null>(null);
-  const [loaded, setLoaded] = useState(false);
+  
+  const [loaded, setLoaded] = useState(() => {
+    // If not true, it's the initial load, so skip React loader (loaded = true).
+    // If true, it's a navigation, so show React loader (loaded = false).
+    return sessionStorage.getItem("initialLoadDone") !== "true";
+  });
+
+  useEffect(() => {
+    if (sessionStorage.getItem("initialLoadDone") !== "true") {
+      const staticLoader = document.getElementById("static-loader");
+      if (staticLoader) {
+        setTimeout(() => {
+          staticLoader.style.transition = "opacity 0.6s ease-in-out, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
+          staticLoader.style.opacity = "0";
+          staticLoader.style.transform = "translateY(-100%)";
+          setTimeout(() => {
+            staticLoader.remove();
+            sessionStorage.setItem("initialLoadDone", "true");
+          }, 600);
+        }, 100);
+      } else {
+        sessionStorage.setItem("initialLoadDone", "true");
+      }
+    }
+  }, []);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
