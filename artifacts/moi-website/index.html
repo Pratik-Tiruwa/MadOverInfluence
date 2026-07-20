@@ -25,12 +25,73 @@
     <meta name="twitter:image" content="https://madeoverinfluence.com/moi-logo-transparent.png" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" href="/moi-logo-transparent.png" as="image" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div id="root"></div>
+    <style>
+      /* Fallback styles until Tailwind loads */
+      #root:empty {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100dvh;
+        background-color: #050505;
+        font-family: sans-serif;
+      }
+      .fallback-loader-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 32rem;
+        padding: 0 2rem;
+      }
+      .fallback-logo {
+        height: 2.5rem;
+        margin-bottom: 2.5rem;
+        opacity: 0.9;
+      }
+      .fallback-progress-bg {
+        width: 100%;
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.1);
+        margin-bottom: 1.5rem;
+      }
+      .fallback-text-row {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: flex-end;
+      }
+      .fallback-loading-text {
+        color: rgba(255, 255, 255, 0.3);
+        font-size: 0.75rem;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+      }
+      .fallback-percent {
+        color: white;
+        font-size: 2.25rem;
+        font-weight: 900;
+      }
+      .fallback-percent span {
+        color: #0066FF;
+      }
+    </style>
+    <div id="root">
+      <div class="fallback-loader-container">
+        <img src="/moi-logo-transparent.png" alt="MOI" class="fallback-logo" />
+        <div class="fallback-progress-bg"></div>
+        <div class="fallback-text-row">
+          <span class="fallback-loading-text">Loading</span>
+          <span class="fallback-percent">0<span>%</span></span>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
