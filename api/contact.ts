@@ -1,5 +1,7 @@
 /// <reference types="node" />
 /// <reference lib="dom" />
+import process from "process";
+import console from "console";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { Resend } from "resend";
 import { z } from "zod";
