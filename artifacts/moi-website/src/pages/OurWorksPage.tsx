@@ -248,6 +248,23 @@ function VideoModal({ deal, onClose }: { deal: typeof brandDeals[0]; onClose: ()
   );
 }
 
+function useInView(rootMargin = "200px") {
+  const ref = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (inView) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setInView(true); observer.disconnect(); } },
+      { rootMargin }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [rootMargin, inView]);
+  return { ref, inView };
+}
+
 function VideoCard({
   deal,
   onClick,
@@ -261,6 +278,7 @@ function VideoCard({
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const { ref: cardRef, inView } = useInView("200px");
 
   // Seek to previewTime after metadata loads to avoid black first frame
   const handleMetadataLoaded = () => {
@@ -285,6 +303,7 @@ function VideoCard({
 
   return (
     <motion.div
+      ref={cardRef}
       className="group relative overflow-hidden rounded-2xl cursor-pointer"
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
@@ -308,7 +327,7 @@ function VideoCard({
       <div className={`relative bg-[#0a0a0a] overflow-hidden ${featured ? "aspect-[4/3]" : "aspect-[9/16]"}`}>
         <video
           ref={videoRef}
-          src={`${deal.videoSrc}#t=0.001`}
+          src={inView ? `${deal.videoSrc}#t=0.001` : undefined}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           muted
           playsInline

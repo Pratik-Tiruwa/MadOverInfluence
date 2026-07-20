@@ -119,6 +119,7 @@ function CreatorCard({ creator, index }: { creator: typeof creators[0]; index: n
         <img
           src={creator.image}
           alt={creator.name}
+          loading="lazy"
           onError={() => setImgError(true)}
           className="absolute inset-0 w-full h-full object-cover"
           style={{
