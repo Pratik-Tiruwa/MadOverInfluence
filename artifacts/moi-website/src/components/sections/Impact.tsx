@@ -119,14 +119,18 @@ function VideoCard({ card, slot, cardH, cardW, slotStyles, isMobile, onClick }: 
         height: cardH,
         marginLeft: -cardW / 2,
         // Animated transform driven by slot
-        transform: `translateX(${s.x}px) scale(${s.scale}) rotate(${s.rotate}deg)`,
+        transform: `translateX(${s.x}px) scale(${s.scale}) rotate(${s.rotate}deg) translateZ(0)`,
         transformOrigin: isMobile ? "center" : "bottom center",
         zIndex: s.zIndex,
         opacity: s.opacity,
-        filter: `brightness(${s.brightness})`,
-        // Smooth transition
+        // Remove filter animation which causes lag, keep it static or rely on opacity
+        filter: isMobile ? "none" : `brightness(${s.brightness})`,
+        // Smooth transition without expensive filter properties
         transition:
-          "transform 0.52s cubic-bezier(0.34, 1.4, 0.64, 1), opacity 0.45s ease, filter 0.45s ease, z-index 0s",
+          "transform 0.52s cubic-bezier(0.34, 1.4, 0.64, 1), opacity 0.45s ease, z-index 0s",
+        willChange: "transform, opacity",
+        WebkitBackfaceVisibility: "hidden",
+        backfaceVisibility: "hidden",
         cursor: isCenter ? "default" : "pointer",
         outline: "none",
       }}
@@ -140,10 +144,13 @@ function VideoCard({ card, slot, cardH, cardW, slotStyles, isMobile, onClick }: 
           overflow: "hidden",
           background: "linear-gradient(160deg, #141418 0%, #0c0c10 100%)",
           border: `1.5px solid ${card.accent}${isCenter ? "55" : "30"}`,
+          // Simplify box-shadow on mobile to avoid lag during transition
           boxShadow: isCenter
-            ? `0 24px 70px rgba(0,0,0,0.85), 0 0 0 1px ${card.accent}18, inset 0 1px 0 rgba(255,255,255,0.08), 0 0 90px ${card.glow}`
-            : `0 12px 40px rgba(0,0,0,0.65), 0 0 0 1px ${card.accent}10, inset 0 1px 0 rgba(255,255,255,0.04)`,
-          transition: "border-color 0.45s ease, box-shadow 0.45s ease",
+            ? (isMobile ? `0 10px 30px rgba(0,0,0,0.8)` : `0 24px 70px rgba(0,0,0,0.85), 0 0 0 1px ${card.accent}18, inset 0 1px 0 rgba(255,255,255,0.08), 0 0 90px ${card.glow}`)
+            : (isMobile ? `0 4px 15px rgba(0,0,0,0.6)` : `0 12px 40px rgba(0,0,0,0.65), 0 0 0 1px ${card.accent}10, inset 0 1px 0 rgba(255,255,255,0.04)`),
+          // Don't animate box-shadow on mobile as it causes layout thrashing
+          transition: isMobile ? "border-color 0.45s ease" : "border-color 0.45s ease, box-shadow 0.45s ease",
+          willChange: "border-color",
         }}
       >
         {/* Video */}

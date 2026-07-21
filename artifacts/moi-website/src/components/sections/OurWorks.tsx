@@ -84,6 +84,8 @@ export default function OurWorks() {
             fontSize: "clamp(80px,16vw,220px)",
             fontWeight: 900,
             lineHeight: 1,
+            willChange: "transform",
+            WebkitBackfaceVisibility: "hidden",
           }}
         >
           {Array.from({ length: 8 }).map((_, i) => (
@@ -94,8 +96,8 @@ export default function OurWorks() {
 
       <style>{`
         @keyframes marquee-works {
-          from { transform: translateX(0); }
-          to   { transform: translateX(-50%); }
+          from { transform: translateX(0) translateZ(0); }
+          to   { transform: translateX(-50%) translateZ(0); }
         }
       `}</style>
 
