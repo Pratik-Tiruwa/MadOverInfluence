@@ -119,8 +119,11 @@ export default function OurWorks() {
           />
         </div>
 
-        {/* Featured Video */}
-        <div className="mb-5 md:mb-6 rounded-2xl overflow-hidden border border-white/5 relative group">
+        {/* Featured Video - Optimized for mobile scroll lag */}
+        <div 
+          className="mb-5 md:mb-6 rounded-2xl overflow-hidden border border-white/5 relative group"
+          style={{ transform: "translateZ(0)", WebkitMaskImage: "-webkit-radial-gradient(white, black)" }}
+        >
           <div
             className="absolute top-0 left-0 right-0 h-[1.5px]"
             style={{ background: "linear-gradient(90deg, transparent, #FF009980, transparent)" }}
@@ -132,6 +135,7 @@ export default function OurWorks() {
             playsInline
             preload="metadata"
             poster=""
+            style={{ transform: "translateZ(0)", willChange: "transform" }}
           />
           <div className="bg-[#0d0d0d] px-6 py-4 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
             <div>

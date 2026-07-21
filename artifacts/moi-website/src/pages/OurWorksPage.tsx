@@ -188,7 +188,7 @@ function VideoModal({ deal, onClose }: { deal: typeof brandDeals[0]; onClose: ()
         onClick={onClose}
       >
         <motion.div
-          className="absolute inset-0 bg-black/95 backdrop-blur-xl"
+          className="absolute inset-0 bg-black/95 sm:backdrop-blur-xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         />
@@ -200,11 +200,16 @@ function VideoModal({ deal, onClose }: { deal: typeof brandDeals[0]; onClose: ()
           exit={{ scale: 0.94, opacity: 0, y: 10 }}
           transition={{ type: "spring", damping: 28, stiffness: 320 }}
           onClick={(e) => e.stopPropagation()}
+          style={{ willChange: "transform, opacity", transform: "translateZ(0)" }}
         >
           {/* Video */}
           <div
             className="rounded-2xl overflow-hidden relative"
-            style={{ boxShadow: `0 0 80px ${deal.accent}30, 0 0 0 1px ${deal.accent}20` }}
+            style={{ 
+              boxShadow: `0 0 0 1px ${deal.accent}20`, // removed heavy 80px glow for mobile 
+              transform: "translateZ(0)", 
+              WebkitMaskImage: "-webkit-radial-gradient(white, black)" 
+            }}
           >
             {/* Close button — inside the card */}
             <button
@@ -221,6 +226,7 @@ function VideoModal({ deal, onClose }: { deal: typeof brandDeals[0]; onClose: ()
               controls
               playsInline
               preload="metadata"
+              style={{ transform: "translateZ(0)", willChange: "transform" }}
             />
 
             {/* Bottom bar */}
