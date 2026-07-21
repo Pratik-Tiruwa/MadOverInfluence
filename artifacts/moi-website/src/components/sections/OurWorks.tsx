@@ -64,11 +64,11 @@ export default function OurWorks() {
       {/* Ambient glows */}
       <div
         className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
-        style={{ background: "#FF0099", filter: "blur(160px)", opacity: 0.04 }}
+        style={{ background: "radial-gradient(circle, rgba(255,0,153,0.04) 0%, transparent 70%)" }}
       />
       <div
         className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none"
-        style={{ background: "#0066FF", filter: "blur(140px)", opacity: 0.05 }}
+        style={{ background: "radial-gradient(circle, rgba(0,102,255,0.05) 0%, transparent 70%)" }}
       />
 
       {/* Background watermark */}

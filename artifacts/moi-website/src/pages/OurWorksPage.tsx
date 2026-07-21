@@ -536,8 +536,8 @@ export default function OurWorksPage() {
         <div className="container mx-auto px-4 md:px-8">
           {/* Ambient glows */}
           <div className="relative">
-            <div className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full pointer-events-none" style={{ background: "#0066FF", filter: "blur(160px)", opacity: 0.04 }} />
-            <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full pointer-events-none" style={{ background: "#FF0099", filter: "blur(160px)", opacity: 0.04 }} />
+            <div className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(0,102,255,0.04) 0%, transparent 70%)" }} />
+            <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(255,0,153,0.04) 0%, transparent 70%)" }} />
 
             <div className="columns-3 gap-1.5 md:gap-3 lg:gap-5 space-y-1.5 md:space-y-3 lg:space-y-5">
               {brandDeals.map((deal, i) => (

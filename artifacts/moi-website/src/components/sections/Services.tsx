@@ -94,19 +94,15 @@ function ServiceCard({
   useEffect(() => {
     const el = pointersRef.current;
     if (!el) return;
+    
+    // We only use GSAP for opacity and transform for better mobile performance.
+    // Height is handled by CSS grid-template-rows transition in the JSX.
     if (active) {
-      gsap.fromTo(
-        el,
-        { height: 0, opacity: 0 },
-        { height: "auto", opacity: 1, duration: 0.5, ease: "power3.out" },
-      );
       gsap.fromTo(
         el.querySelectorAll(".pointer-item"),
         { y: 12, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.4, stagger: 0.06, ease: "power3.out" },
+        { y: 0, opacity: 1, duration: 0.4, stagger: 0.06, ease: "power3.out", overwrite: true },
       );
-    } else {
-      gsap.to(el, { height: 0, opacity: 0, duration: 0.32, ease: "power3.in" });
     }
   }, [active]);
 
@@ -176,26 +172,31 @@ function ServiceCard({
         {service.oneLiner}
       </p>
 
-      {/* Expandable pointers */}
+      {/* Expandable pointers (CSS Grid approach for performant height transition) */}
       <div
-        ref={pointersRef}
-        style={{ height: 0, overflow: "hidden", opacity: 0 }}
+        className="grid transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+        style={{
+          gridTemplateRows: active ? "1fr" : "0fr",
+          opacity: active ? 1 : 0,
+        }}
       >
-        <div className="pt-6 border-t border-white/5 mt-6 space-y-4">
-          {service.pointers.map((p, i) => (
-            <div key={i} className="pointer-item flex items-start gap-3">
-              <span
-                className="w-[5px] h-[5px] rounded-full shrink-0 mt-[6px]"
-                style={{ background: service.accent }}
-              />
-              <div>
-                <span className="text-white font-semibold text-base">
-                  {p.label}
-                </span>
-                <span className="text-white/40 text-base"> — {p.desc}</span>
+        <div className="overflow-hidden">
+          <div ref={pointersRef} className="pt-6 border-t border-white/5 mt-6 space-y-4">
+            {service.pointers.map((p, i) => (
+              <div key={i} className="pointer-item flex items-start gap-3 opacity-0">
+                <span
+                  className="w-[5px] h-[5px] rounded-full shrink-0 mt-[6px]"
+                  style={{ background: service.accent }}
+                />
+                <div>
+                  <span className="text-white font-semibold text-base">
+                    {p.label}
+                  </span>
+                  <span className="text-white/40 text-base"> — {p.desc}</span>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -248,10 +249,10 @@ export default function Services() {
       className="py-16 sm:py-20 md:py-28 lg:py-36 bg-[#050505] relative overflow-hidden"
       ref={sectionRef}
     >
-      {/* Ambient glow */}
+      {/* Ambient glow - optimized using radial-gradient instead of heavy blur filter */}
       <div
-        className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-[#FF0099] rounded-full mix-blend-screen pointer-events-none"
-        style={{ filter: "blur(130px)", opacity: 0.06 }}
+        className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(255,0,153,0.1) 0%, transparent 70%)" }}
       />
 
       {/* Background watermark — static */}

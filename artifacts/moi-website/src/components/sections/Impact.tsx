@@ -331,12 +331,12 @@ export default function Impact() {
     >
       {/* Ambient glows */}
       <div
-        className="absolute top-0 left-0 w-[600px] h-[600px] bg-[#0066FF] rounded-full mix-blend-screen pointer-events-none"
-        style={{ filter: "blur(160px)", opacity: 0.05 }}
+        className="absolute top-0 left-0 w-[600px] h-[600px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(0,102,255,0.05) 0%, transparent 70%)" }}
       />
       <div
-        className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#7755FF] rounded-full mix-blend-screen pointer-events-none"
-        style={{ filter: "blur(140px)", opacity: 0.06 }}
+        className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(119,85,255,0.06) 0%, transparent 70%)" }}
       />
 
       {/* Background watermark */}

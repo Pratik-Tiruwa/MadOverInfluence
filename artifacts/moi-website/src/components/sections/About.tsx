@@ -41,11 +41,11 @@ export default function About() {
       ref={sectionRef}
       className="py-14 md:py-24 lg:py-36 bg-[#0a0a0a] relative overflow-hidden"
     >
-      {/* Ambient glows */}
-      <div className="absolute -top-1/4 -left-1/4 w-2/3 h-2/3 bg-[#0066FF] rounded-full mix-blend-screen pointer-events-none"
-        style={{ filter: "blur(180px)", opacity: 0.06 }} />
-      <div className="absolute -bottom-1/4 -right-1/4 w-2/3 h-2/3 bg-[#FF0099] rounded-full mix-blend-screen pointer-events-none"
-        style={{ filter: "blur(180px)", opacity: 0.06 }} />
+      {/* Ambient glows - Optimized for mobile by using radial gradient instead of mix-blend-screen + blur */}
+      <div className="absolute -top-1/4 -left-1/4 w-2/3 h-2/3 rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(0,102,255,0.06) 0%, transparent 70%)" }} />
+      <div className="absolute -bottom-1/4 -right-1/4 w-2/3 h-2/3 rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(255,0,153,0.06) 0%, transparent 70%)" }} />
 
       {/* Background watermark — static */}
       <div
