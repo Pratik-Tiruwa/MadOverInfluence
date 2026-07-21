@@ -173,7 +173,7 @@ export default function Navbar({ isStaticPage }: { isStaticPage?: boolean }) {
             <img
               src={isScrolled ? moiLogo : fullLogo}
               alt={isScrolled ? "MOI" : "MadeOverInfluence"}
-              className={`object-contain transition-all duration-300 ease-in-out ${isScrolled ? "h-9 lg:h-10" : "h-10 lg:h-11"}`}
+              className={`object-contain transition-all duration-300 ease-in-out mix-blend-screen ${isScrolled ? "h-9 lg:h-10" : "h-10 lg:h-11"}`}
               data-testid="img-navbar-logo"
             />
           </a>
