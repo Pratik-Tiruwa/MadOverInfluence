@@ -58,7 +58,7 @@ const creators = [
   {
     name: "Curlyy Mess",
     handle: "_curlyy_mess",
-    insta: "https://www.instagram.com/_curlyy_mess",
+    insta: "https://www.instagram.com/_curlyy_mess/",
     followers: "Growing",
     color: "#FF33CC",
     image: "/creators/curlyy-mess.jpeg",
