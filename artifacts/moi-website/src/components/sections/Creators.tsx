@@ -351,9 +351,9 @@ export default function Creators() {
   }, []);
 
   return (
-    <>
+    <div id="creators">
       {/* ── DESKTOP: GSAP pinned horizontal scroll ── */}
-      <div id="creators" ref={outerRef} className="hidden lg:block relative bg-[#050505]">
+      <div ref={outerRef} className="hidden lg:block relative bg-[#050505]">
         <div
           ref={stickyRef}
           className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center"
@@ -435,7 +435,7 @@ export default function Creators() {
       </div>
 
       {/* ── MOBILE: snap horizontal scroll ── */}
-      <section id="creators" className="lg:hidden py-14 sm:py-20 bg-[#050505] overflow-hidden">
+      <section className="lg:hidden py-14 sm:py-20 bg-[#050505] overflow-hidden">
         <div className="px-4 sm:px-6 mb-8 sm:mb-10">
           <p className="text-xs font-semibold tracking-[0.35em] uppercase text-[#0066FF] mb-2">
             The Roster
@@ -492,6 +492,6 @@ export default function Creators() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
