@@ -56,6 +56,14 @@ const creators = [
     image: "/creators/pink-smile.jpg",
   },
   {
+    name: "Curlyy Mess",
+    handle: "_curlyy_mess",
+    insta: "https://www.instagram.com/_curlyy_mess",
+    followers: "Growing",
+    color: "#FF33CC",
+    image: "/creators/curlyy-mess.jpeg",
+  },
+  {
     name: "Yash Khatu",
     handle: "yash_in_rush",
     insta: "https://www.instagram.com/yash_in_rush",
