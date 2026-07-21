@@ -56,10 +56,10 @@ const creators = [
     image: "/creators/pink-smile.jpg",
   },
   {
-    name: "Curlyy Mess",
+    name: "Sanjana Ravale",
     handle: "_curlyy_mess",
     insta: "https://www.instagram.com/_curlyy_mess/",
-    followers: "Growing",
+    followers: "148K+",
     color: "#FF33CC",
     image: "/creators/curlyy-mess.jpeg",
   },
