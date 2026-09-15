@@ -3,7 +3,7 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 // ── Zod schema (mirrors backend) ──────────────────────────────────────────────
@@ -133,17 +133,7 @@ export default function Contact() {
                 </div>
               </div>
               
-              <div className="flex items-start gap-3 sm:gap-4">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/5 flex items-center justify-center shrink-0">
-                  <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF0099]" />
-                </div>
-                <div>
-                  <p className="text-xs sm:text-sm text-foreground/50 mb-1">Call Us</p>
-                  <a href="tel:8828031506" className="text-base sm:text-lg font-medium text-white hover:text-[#FF0099] transition-colors">
-                    +91 88280 31506
-                  </a>
-                </div>
-              </div>
+
 
               <div className="flex items-start gap-3 sm:gap-4">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/5 flex items-center justify-center shrink-0">

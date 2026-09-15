@@ -1,5 +1,5 @@
 const moiLogo = "/moi-logo-transparent.png";
-import { Instagram, Linkedin, Mail, Phone } from "lucide-react";
+import { Instagram, Linkedin, Mail } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -95,16 +95,7 @@ export default function Footer() {
                   <span className="text-xs sm:text-sm leading-relaxed break-all">surajsaboji@madeoverinfluence.com</span>
                 </a>
               </li>
-              <li>
-                <a
-                  href="tel:+918828031506"
-                  className="flex items-center gap-3 text-white/40 hover:text-white transition-colors group"
-                  data-testid="link-footer-phone"
-                >
-                  <Phone size={14} className="shrink-0 group-hover:text-[#FF0099] transition-colors" />
-                  <span className="text-xs sm:text-sm">+91 88280 31506</span>
-                </a>
-              </li>
+
               <li className="text-white/40 text-xs sm:text-sm">
                 Mumbai, India
               </li>
